@@ -10,7 +10,7 @@ const Form = ({
 }) => {
   function submitHandler(e) {
     e.preventDefault();
-    if (userInput > 15 || userInput < 0) {
+    if (userInput > 15 || userInput <= 0) {
       setError(true);
       setTimeout(() => {
         setError(false);
@@ -22,11 +22,12 @@ const Form = ({
       }
     }
     setBoxNo(random);
+    setUserInput(0);
   }
   return (
     <>
       <form
-        className="w-1/3 mx-auto shadow-2xl rounded-md p-4"
+        className="w-full md:w-1/2 mx-auto shadow-2xl rounded-md p-4"
         onSubmit={submitHandler}
       >
         <input

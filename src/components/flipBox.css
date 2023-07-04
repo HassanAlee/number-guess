@@ -1,0 +1,25 @@
+@keyframes flip {
+  from {
+    transform: perspective(800px) rotateY(0);
+  }
+  to {
+    transform: perspective(800px) rotateY(180deg);
+  }
+}
+
+@keyframes flip-reverse {
+  from {
+    transform: perspective(800px) rotateY(180deg);
+  }
+  to {
+    transform: perspective(800px) rotateY(0);
+  }
+}
+
+.flipped {
+  animation: flip 1s;
+}
+
+.back-face {
+  animation: flip-reverse 1s;
+}

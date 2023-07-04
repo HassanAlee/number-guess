@@ -27,7 +27,7 @@ function App() {
       });
     } else {
       Swal.fire({
-        title: "Numbers did not matched",
+        title: "Numbers did not match",
         icon: "error",
         customClass: {
           popup: "swal-custom-background_light",

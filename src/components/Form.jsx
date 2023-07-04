@@ -1,8 +1,10 @@
 import React from "react";
 
 const Form = ({
-  setUserInput,
-  userInput,
+  start,
+  end,
+  setStart,
+  setEnd,
   error,
   setError,
   random,
@@ -10,19 +12,21 @@ const Form = ({
 }) => {
   function submitHandler(e) {
     e.preventDefault();
-    if (userInput > 15 || userInput <= 0) {
+    if (start <= 0) {
       setError(true);
       setTimeout(() => {
         setError(false);
       }, 3000);
     } else {
       for (let i = 1; i < 10; i++) {
-        let num = Math.floor(Math.random() * 15) + 1;
+        let num = Math.floor(Math.random() * (end - start + 1)) + start;
         random.push(num);
       }
     }
     setBoxNo(random);
-    setUserInput(0);
+    // setUserInput(0);
+    console.log(start);
+    console.log(end);
   }
   return (
     <>
@@ -33,11 +37,18 @@ const Form = ({
         <input
           type="text"
           className="p-4 w-full block text-center mb-4"
-          placeholder="enter a number(1-15)"
+          placeholder="Enter minimum number"
+          value={start}
+          onChange={(e) => setStart(parseInt(e.target.value))}
+        />
+        <input
+          type="text"
+          className="p-4 w-full block text-center mb-4"
+          placeholder="Enter maximum number"
           min={1}
           max={15}
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
+          value={end}
+          onChange={(e) => setEnd(parseInt(e.target.value))}
         />
         {error ? (
           <p className="font-medium text-red-600 text-center pb-4">

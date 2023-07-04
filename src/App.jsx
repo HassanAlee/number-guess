@@ -3,7 +3,8 @@ import "./dist/output.css";
 import Form from "./components/Form";
 import { useState } from "react";
 function App() {
-  const [userInput, setUserInput] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
   const [error, setError] = useState(false);
   const randomArray = [];
   const [boxNo, setBoxNo] = useState([]);
@@ -11,8 +12,10 @@ function App() {
     <>
       <section className="w-full h-auto pt-12 overflow-hidden  ">
         <Form
-          setUserInput={setUserInput}
-          userInput={userInput}
+          start={start}
+          setStart={setStart}
+          end={end}
+          setEnd={setEnd}
           error={error}
           setError={setError}
           random={randomArray}
@@ -24,6 +27,7 @@ function App() {
             : boxNo.map((num, index) => {
                 return (
                   <div
+                    onClick={() => console.log(num)}
                     key={index}
                     className="w-40 h-40 inline-flex items-center cursor-pointer  justify-center mx-auto bg-teal-400 rounded-md hover:bg-yellow-300"
                   >

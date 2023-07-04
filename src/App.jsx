@@ -2,7 +2,8 @@ import React from "react";
 import "./dist/output.css";
 import Form from "./components/Form";
 import { useState } from "react";
-import Alert from "./components/Alert";
+import Box from "./components/Box";
+import Swal from "sweetalert2";
 function App() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -11,21 +12,30 @@ function App() {
   const [boxNo, setBoxNo] = useState([]);
   const [userChoice, setUserChoice] = useState();
   const [randomNum, setRandomNum] = useState();
-  const [alert, setAlert] = useState({ show: false });
   function matchNumber() {
     console.log(`I am random num:${randomNum}`);
     console.log(`I am user choice:${userChoice}`);
     if (randomNum == userChoice) {
-      handleAlert({ type: "green", text: "Numbers matched" });
+      Swal.fire({
+        title: "Numbers matched",
+        icon: "success",
+        customClass: {
+          popup: "swal-custom-background_light",
+          cancelButton: "swal-custom-cancel-button",
+        },
+        reverseButtons: true,
+      });
     } else {
-      handleAlert({ type: "red", text: "Numbers not matched" });
+      Swal.fire({
+        title: "Numbers did not matched",
+        icon: "error",
+        customClass: {
+          popup: "swal-custom-background_light",
+          cancelButton: "swal-custom-cancel-button",
+        },
+        reverseButtons: true,
+      });
     }
-  }
-  function handleAlert({ type, text }) {
-    setAlert({ show: true, text, type });
-    setTimeout(() => {
-      setAlert({ show: false });
-    }, 2800);
   }
   return (
     <>
@@ -41,22 +51,13 @@ function App() {
           setBoxNo={setBoxNo}
           setRandomNum={setRandomNum}
         />
-        {alert.show ? <Alert type={alert.type} text={alert.text} /> : ""}
+        {/* {alert.show ? <Alert type={alert.type} text={alert.text} /> : ""} */}
         <section className="w-full md:w-3/5 mx-auto h-auto mt-12 mb-20 grid grid-cols-2 md:grid-cols-3 gap-2">
           {boxNo.length == 0
             ? ""
             : boxNo.map((num, index) => {
                 return (
-                  <div
-                    onClick={() => {
-                      setUserChoice(num);
-                      console.log(num);
-                    }}
-                    key={index}
-                    className="w-40 h-40 inline-flex items-center cursor-pointer  justify-center text-center mx-auto bg-teal-400 rounded-md hover:bg-yellow-300"
-                  >
-                    Click to enter your choice
-                  </div>
+                  <Box num={num} key={index} setUserChoice={setUserChoice} />
                 );
               })}
         </section>

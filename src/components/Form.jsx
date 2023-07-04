@@ -35,20 +35,30 @@ const Form = ({
         onSubmit={submitHandler}
       >
         <input
-          type="text"
+          type="number"
           className="p-4 w-full block text-center mb-4"
           placeholder="Enter minimum number"
           value={start}
-          onChange={(e) => setStart(parseInt(e.target.value))}
+          onChange={(e) => {
+            if (e.target.value !== "") {
+              setStart(parseInt(e.target.value));
+            } else {
+              setStart("");
+            }
+          }}
         />
         <input
-          type="text"
+          type="number"
           className="p-4 w-full block text-center mb-4"
           placeholder="Enter maximum number"
-          min={1}
-          max={15}
           value={end}
-          onChange={(e) => setEnd(parseInt(e.target.value))}
+          onChange={(e) => {
+            if (e.currentTarget.value !== "") {
+              setEnd(parseInt(e.target.value));
+            } else {
+              setEnd("");
+            }
+          }}
         />
         {error ? (
           <p className="font-medium text-red-600 text-center pb-4">

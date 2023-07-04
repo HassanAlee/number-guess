@@ -12,6 +12,7 @@ function App() {
   const [boxNo, setBoxNo] = useState([]);
   const [userChoice, setUserChoice] = useState();
   const [randomNum, setRandomNum] = useState();
+  const [clicks, setClicks] = useState(0);
   function matchNumber() {
     console.log(`I am random num:${randomNum}`);
     console.log(`I am user choice:${userChoice}`);
@@ -57,7 +58,13 @@ function App() {
             ? ""
             : boxNo.map((num, index) => {
                 return (
-                  <Box num={num} key={index} setUserChoice={setUserChoice} />
+                  <Box
+                    num={num}
+                    key={index}
+                    setClicks={setClicks}
+                    clicks={clicks}
+                    setUserChoice={setUserChoice}
+                  />
                 );
               })}
         </section>

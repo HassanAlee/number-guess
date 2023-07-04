@@ -10,6 +10,7 @@ function App() {
   const [boxNo, setBoxNo] = useState([]);
   const [userChoice, setUserChoice] = useState();
   const [randomNum, setRandomNum] = useState();
+  const [showResult, setShowResult] = useState(true);
   function matchNumber() {
     if (randomNum == userChoice) {
       console.log("Wow! You guessed it right!!!");
@@ -31,7 +32,14 @@ function App() {
           setBoxNo={setBoxNo}
           setRandomNum={setRandomNum}
         />
-        <section className="w-full md:w-3/5 mx-auto h-auto mt-12 mb-20 grid grid-cols-1 md:grid-cols-3 gap-2">
+        {/* {showResult ? (
+          <h1 className="font-bold bg-slate-400 mt-8 text-center py-8">
+            Numbers matched
+          </h1>
+        ) : (
+          ""
+        )} */}
+        <section className="w-full md:w-3/5 mx-auto h-auto mt-12 mb-20 grid grid-cols-2 md:grid-cols-3 gap-2">
           {boxNo.length == 0
             ? ""
             : boxNo.map((num, index) => {
@@ -55,6 +63,9 @@ function App() {
         >
           Match number
         </button>
+        {/* <div className="absolute h-full w-full bg-slate-400 top-0 left-0 flex items-center justify-center">
+          <h1>Numbers matched</h1>
+        </div> */}
       </section>
     </>
   );

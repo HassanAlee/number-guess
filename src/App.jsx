@@ -2,6 +2,7 @@ import React from "react";
 import "./dist/output.css";
 import Form from "./components/Form";
 import { useState } from "react";
+import Alert from "./components/Alert";
 function App() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -10,13 +11,21 @@ function App() {
   const [boxNo, setBoxNo] = useState([]);
   const [userChoice, setUserChoice] = useState();
   const [randomNum, setRandomNum] = useState();
-  const [showResult, setShowResult] = useState(true);
+  const [alert, setAlert] = useState({ show: false });
   function matchNumber() {
+    console.log(`I am random num:${randomNum}`);
+    console.log(`I am user choice:${userChoice}`);
     if (randomNum == userChoice) {
-      console.log("Wow! You guessed it right!!!");
+      handleAlert({ type: "green", text: "Numbers matched" });
+    } else {
+      handleAlert({ type: "red", text: "Numbers not matched" });
     }
-    console.log(`userChoice: ${userChoice}`);
-    console.log(`randomNum: ${randomNum}`);
+  }
+  function handleAlert({ type, text }) {
+    setAlert({ show: true, text, type });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 2800);
   }
   return (
     <>
@@ -32,13 +41,7 @@ function App() {
           setBoxNo={setBoxNo}
           setRandomNum={setRandomNum}
         />
-        {/* {showResult ? (
-          <h1 className="font-bold bg-slate-400 mt-8 text-center py-8">
-            Numbers matched
-          </h1>
-        ) : (
-          ""
-        )} */}
+        {alert.show ? <Alert type={alert.type} text={alert.text} /> : ""}
         <section className="w-full md:w-3/5 mx-auto h-auto mt-12 mb-20 grid grid-cols-2 md:grid-cols-3 gap-2">
           {boxNo.length == 0
             ? ""
@@ -63,9 +66,6 @@ function App() {
         >
           Match number
         </button>
-        {/* <div className="absolute h-full w-full bg-slate-400 top-0 left-0 flex items-center justify-center">
-          <h1>Numbers matched</h1>
-        </div> */}
       </section>
     </>
   );

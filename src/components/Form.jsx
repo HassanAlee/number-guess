@@ -9,6 +9,7 @@ const Form = ({
   setError,
   random,
   setBoxNo,
+  setRandomNum,
 }) => {
   function submitHandler(e) {
     e.preventDefault();
@@ -18,6 +19,7 @@ const Form = ({
         setError(false);
       }, 3000);
     } else {
+      setRandomNum(Math.floor(Math.random() * (end - start + 1)) + start);
       for (let i = 1; i < 10; i++) {
         let num = Math.floor(Math.random() * (end - start + 1)) + start;
         random.push(num);
@@ -25,8 +27,6 @@ const Form = ({
     }
     setBoxNo(random);
     // setUserInput(0);
-    console.log(start);
-    console.log(end);
   }
   return (
     <>

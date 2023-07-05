@@ -16,7 +16,8 @@ const Form = ({
     e.preventDefault();
     setClicks(0)
     setBoxNo([])
-    if (start <= 0) {
+    setTimeout(()=>{
+      if (start <= 0) {
       setError(true);
       setTimeout(() => {
         setError(false);
@@ -30,6 +31,7 @@ const Form = ({
     }
     setBoxNo(random);
     // setUserInput(0);
+    },500)
   }
   return (
     <>

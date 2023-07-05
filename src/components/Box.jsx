@@ -48,8 +48,8 @@ const[text,setText]=useState('Click to enter choice')
         
       }
     }
-      className={`w-40 h-40 inline-flex items-center cursor-pointer  justify-center text-center mx-auto bg-teal-400 rounded-md hover:bg-yellow-300 ${
-        flipped ? "flipped hover:cursor-not-allowed bg-teal-100" : ""
+      className={`w-40 h-40 inline-flex items-center cursor-pointer  justify-center text-center mx-auto bg-indigo-500 rounded-md hover:bg-purple-600 ${
+        flipped ? "flipped hover:cursor-not-allowed bg-yellow-400" : ""
       } `}
     >
       {text}

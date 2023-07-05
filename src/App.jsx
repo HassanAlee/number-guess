@@ -28,6 +28,16 @@ function App() {
         reverseButtons: true,
       });
       setUserChoice()
+    }else if(userChoice==undefined){
+      Swal.fire({
+        title: "Select a different box",
+        icon: "info",
+        customClass: {
+          popup: "swal-custom-background_light",
+          cancelButton: "swal-custom-cancel-button",
+        },
+        reverseButtons: true,
+      });
     } else {
       Swal.fire({
         title: "Numbers did not match",

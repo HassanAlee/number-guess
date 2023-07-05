@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./flipBox.css";
 import Swal from "sweetalert2";
 const Box = ({ setUserChoice, num, setClicks, clicks }) => {
-  const [flipped, setFlipped] = useState(false);
+const [flipped, setFlipped] = useState(false);
 const[showNum,setShowNum]=useState(false)
+const[text,setText]=useState('Click to enter choice')
   useEffect(() => {
     if (clicks > 5) {
       Swal.fire({
@@ -38,9 +39,11 @@ const[showNum,setShowNum]=useState(false)
           setUserChoice(num);
           setFlipped(!flipped);
           setClicks(clicks + 1);
+          setText('')
           setTimeout(()=>{
-            setShowNum(true)
-          },1200)
+            // setShowNum(true)
+            setText(num)
+          },1000)
         }
         
       }
@@ -49,7 +52,7 @@ const[showNum,setShowNum]=useState(false)
         flipped ? "flipped hover:cursor-not-allowed bg-teal-100" : ""
       } `}
     >
-      {showNum ? `${num}` : "Click to enter your choice"}
+      {text}
     </div>
   );
 };

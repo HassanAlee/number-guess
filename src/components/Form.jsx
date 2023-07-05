@@ -17,7 +17,7 @@ const Form = ({
     setClicks(0)
     setBoxNo([])
     setTimeout(()=>{
-      if (start <= 0) {
+      if (start <= 0 || end<=0) {
       setError(true);
       setTimeout(() => {
         setError(false);
@@ -69,7 +69,7 @@ const Form = ({
         />
         {error ? (
           <p className="font-medium text-red-600 text-center pb-4">
-            Please enter correct numbers
+            Input error
           </p>
         ) : (
           ""

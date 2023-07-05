@@ -7,14 +7,18 @@ const Box = ({ setUserChoice, num, setClicks, clicks }) => {
   useEffect(() => {
     if (clicks > 5) {
       Swal.fire({
-        title: "You raech maximum limit",
+        title: "You reach maximum limit",
         icon: "error",
         customClass: {
           popup: "swal-custom-background_light",
           cancelButton: "swal-custom-cancel-button",
         },
         reverseButtons: true,
-      });
+      }).then(response=>{
+        if(response.isConfirmed){
+          location.reload()
+        }
+      })
     }
   }, [clicks]);
   return (

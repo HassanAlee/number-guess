@@ -62,7 +62,7 @@ const Form = ({
         />
         {error ? (
           <p className="font-medium text-red-600 text-center pb-4">
-            Number should be between 1-15
+            Please enter correct numbers
           </p>
         ) : (
           ""

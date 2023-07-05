@@ -50,7 +50,18 @@ function App() {
       });
       setUserChoice()
     }
-    }else if(clicks==''){
+    }else if(boxNo.length==0){
+      Swal.fire({
+        title: "Please input values first",
+        icon: "info",
+        customClass: {
+          popup: "swal-custom-background_light",
+          cancelButton: "swal-custom-cancel-button",
+        },
+        reverseButtons: true,
+      });
+    }
+    else if(clicks==0){
       Swal.fire({
         title: "Please select any box",
         icon: "info",

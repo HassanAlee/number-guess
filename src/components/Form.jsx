@@ -10,9 +10,12 @@ const Form = ({
   random,
   setBoxNo,
   setRandomNum,
+  setClicks
 }) => {
   function submitHandler(e) {
     e.preventDefault();
+    setClicks(0)
+    setBoxNo([])
     if (start <= 0) {
       setError(true);
       setTimeout(() => {
@@ -40,6 +43,7 @@ const Form = ({
           placeholder="Enter minimum number"
           value={start}
           onChange={(e) => {
+            setBoxNo([])
             if (e.target.value !== "") {
               setStart(parseInt(e.target.value));
             } else {
@@ -53,6 +57,7 @@ const Form = ({
           placeholder="Enter maximum number"
           value={end}
           onChange={(e) => {
+            setBoxNo([])
             if (e.currentTarget.value !== "") {
               setEnd(parseInt(e.target.value));
             } else {

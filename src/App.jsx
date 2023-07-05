@@ -42,8 +42,8 @@ function App() {
     }
     }else if(clicks==''){
       Swal.fire({
-        title: "Please enter numbers",
-        icon: "error",
+        title: "Please select any box",
+        icon: "info",
         customClass: {
           popup: "swal-custom-background_light",
           cancelButton: "swal-custom-cancel-button",
@@ -83,6 +83,7 @@ function App() {
           random={randomArray}
           setBoxNo={setBoxNo}
           setRandomNum={setRandomNum}
+          setClicks={setClicks}
         />
         <section className="w-full md:w-3/5 mx-auto h-auto mt-12 mb-20 grid grid-cols-2 md:grid-cols-3 gap-2">
           {boxNo.length == 0
